@@ -1,6 +1,4 @@
-# ===========================
 # CI/CD Train ↔ Inference Feature Parity Validation
-# ===========================
 
 import json
 from pathlib import Path
