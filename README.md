@@ -7,4 +7,4 @@ This project uses data from Open Power System Data (OPSD).
 
 To download the raw datasets:
 ```bash
-python scripts/download_data.py
+scripts/download_data.py
