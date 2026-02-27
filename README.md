@@ -29,6 +29,17 @@ The codebase mirrors how ML systems are typically structured in production: repr
     -Monitoring prediction stability over time
     -Model lifecycle management across retrains
 
+## Data Sources
+
+Raw data is not committed to this repository due to size constraints and best practices.
+
+This project uses data from Open Power System Data (OPSD).
+
+To download the raw datasets:
+
+```bash
+python scripts/download_data.py
+
 ## Repository Structure - Key Modules
 
 - `src/config.py` - Centralized paths, thresholds, and operational constants
