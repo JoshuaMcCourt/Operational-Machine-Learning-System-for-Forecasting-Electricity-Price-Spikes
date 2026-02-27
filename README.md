@@ -31,41 +31,12 @@ The codebase mirrors how ML systems are typically structured in production: repr
 
 ## Repository Structure - Key Modules
 
+- `src/config.py` - Centralized paths, thresholds, and operational constants
 - `src/ingest_features.py` – Raw data ingestion and feature engineering  
 - `src/validate_features.py` – Schema and semantic validation  
 - `src/train_model.py` – Training, tuning, and calibration  
 - `src/serve_inference.py` – Batch inference and monitoring  
 - `src/feature_parity.py` – Train ↔ serve feature parity checks  
-
-ml-open-power-project/
-├── README.md
-├── requirements.txt
-│
-├── data/
-│   ├── raw/
-│   │   └── opsd/
-│   │       ├── time_series.csv
-│   │       └── weather_data.csv
-│   ├── processed/
-│   └── features/
-│
-├── scripts/
-│   └── download_data.py
-│
-├── models/
-│   └── logs/
-│
-├── src/
-│   ├── config.py
-│   ├── ingest_features.py
-│   ├── validate_features.py
-│   ├── train_model.py
-│   ├── serve_inference.py
-│   ├── shadow_deploy.py
-│   └── feature_parity.py
-│
-└── notebook/
-    └── full_pipeline.ipynb
 
 ## Typical Workflow
 
