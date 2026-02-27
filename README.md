@@ -32,6 +32,7 @@ The codebase mirrors how ML systems are typically structured in production: repr
 ## Repository Structure
 
 ml-open-power-project/
+
 ├── README.md
 ├── requirements.txt
 │
@@ -83,6 +84,7 @@ src/shadow_deploy.py runs parallel inference for safe model comparisons and iter
 ## Engineering Focus
 
 This project is designed to reflect production ML workflows:
+
     -Clear separation between ingestion, validation, training, and serving
     -Defensive checks to prevent silent train/serve mismatches
     -Feature schema versioning for reproducibility
