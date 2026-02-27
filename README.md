@@ -31,8 +31,14 @@ The codebase mirrors how ML systems are typically structured in production: repr
 
 ## Repository Structure
 
-ml-open-power-project/
+## Key Modules
+- `src/ingest_features.py` – Raw data ingestion and feature engineering  
+- `src/validate_features.py` – Schema and semantic validation  
+- `src/train_model.py` – Training, tuning, and calibration  
+- `src/serve_inference.py` – Batch inference and monitoring  
+- `src/feature_parity.py` – Train ↔ serve feature parity checks  
 
+ml-open-power-project/
 ├── README.md
 ├── requirements.txt
 │
