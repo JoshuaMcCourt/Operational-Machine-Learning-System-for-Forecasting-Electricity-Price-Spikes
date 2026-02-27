@@ -29,9 +29,8 @@ The codebase mirrors how ML systems are typically structured in production: repr
     -Monitoring prediction stability over time
     -Model lifecycle management across retrains
 
-## Repository Structure
+## Repository Structure - Key Modules
 
-## Key Modules
 - `src/ingest_features.py` – Raw data ingestion and feature engineering  
 - `src/validate_features.py` – Schema and semantic validation  
 - `src/train_model.py` – Training, tuning, and calibration  
