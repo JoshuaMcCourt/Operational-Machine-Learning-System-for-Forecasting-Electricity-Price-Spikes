@@ -51,21 +51,21 @@ To download the raw datasets:
 ## Typical Workflow
 
 #### Data Acquisition
-Use scripts/download_data.py to fetch and reproduce the raw datasets locally.
+Use `scripts/download_data.py` to fetch and reproduce the raw datasets locally.
 
 #### Feature Ingestion & Versioning
-src/ingest_features.py loads raw time-series data, constructs features, and writes versioned feature tables and schema snapshots.
+`src/ingest_features.py` loads raw time-series data, constructs features, and writes versioned feature tables and schema snapshots.
 
 #### Schema & Feature Validation
-src/validate_features.py enforces column presence, constraints, and basic semantic checks.
-src/feature_parity.py guarantees train–serve feature parity (schema, column order, dtypes).
+`src/validate_features.py` enforces column presence, constraints, and basic semantic checks.
+`src/feature_parity.py` guarantees train–serve feature parity (schema, column order, dtypes).
 
 #### Model Training
-src/train_model.py performs target construction, temporal splits, Optuna tuning, and probability calibration. Trained artifacts and metadata are versioned.
+`src/train_model.py` performs target construction, temporal splits, Optuna tuning, and probability calibration. Trained artifacts and metadata are versioned.
 
 #### Batch Inference & Monitoring
-src/serve_inference.py runs production-style batch inference, logs predictions, and computes drift metrics.
-src/shadow_deploy.py runs parallel inference for safe model comparisons and iteration.
+`src/serve_inference.py` runs production-style batch inference, logs predictions, and computes drift metrics.
+`src/shadow_deploy.py` runs parallel inference for safe model comparisons and iteration.
 
 ## Engineering Focus
 
@@ -86,10 +86,4 @@ Although framed around electricity price spike risk, the architecture generalize
 ## Disclaimer
 
 This repository is for demonstration and portfolio purposes only and is not intended for use in live trading or operational decision systems.
-
-
-
-
-
-
 
