@@ -7,6 +7,17 @@ This repository implements a modular, production-style machine learning pipeline
 
 The codebase mirrors how ML systems are typically structured in production: reproducible data ingestion, versioned feature generation, schema enforcement, train–serve parity checks, model training with tuning and calibration, and monitored batch inference with shadow deployments.
 
+## Business Context & Value
+
+Electricity price spikes can create significant risk in energy markets, affecting operational stability, cost efficiency, and planning decisions.
+
+This system demonstrates how machine learning can support:
+
+-- Early identification of high-risk pricing periods
+-- Operational risk monitoring in energy systems
+-- Data-driven decision support for market volatility
+-- Improved awareness of system stress conditions using external signals (demand, renewables, weather)
+
 ## What This Demonstrates
 
 #### Machine Learning Engineering
