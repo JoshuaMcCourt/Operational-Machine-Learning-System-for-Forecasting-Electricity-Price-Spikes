@@ -18,35 +18,77 @@ This system demonstrates how machine learning can support:
 - Data-driven decision support for market volatility
 - Improved awareness of system stress conditions using external signals (demand, renewables, weather)
 
+## System Architecture
+
+The pipeline is structured as a production-grade ML system with clear separation of concerns:
+
+Raw Data
+   ↓
+Feature Engineering
+   ↓
+Schema Validation Layer
+   ↓
+Model Training & Calibration
+   ↓
+Model Artifacts / Versioning
+   ↓
+Batch Inference
+   ↓
+Monitoring & Drift Detection
+
+### Design Principles
+- Strict `train/serve feature parity enforcement` to prevent inference skew
+- Versioned feature generation for reproducibility and auditability
+- Modular pipeline design enabling independent retraining and deployment
+- Built-in observability via structured logging and drift monitoring
+- Shadow deployment support for safe model iteration
+
 ## What This Demonstrates
 
 #### Machine Learning Engineering
-    -Reproducible feature engineering from raw time-series inputs
-    -Temporal feature construction (lags, rolling statistics)
-    -Time-aware train/validation splits
-    -Hyperparameter tuning with Optuna
-    -Probability calibration for operational decision thresholds
+- Reproducible feature engineering from raw time-series inputs
+- Temporal feature construction (lags, rolling statistics, trend features)
+- Time-aware train/validation splitting to prevent leakage
+- Hyperparameter optimisation using Optuna
+- Probability calibration for decision-threshold stability
 
 #### Production Readiness
-    -Schema snapshots and strict feature validation
-    -Train + inference feature parity checks
-    -Drift monitoring using PSI
-    -Structured inference logging
-    -Shadow deployments for safe model iteration
+- Schema snapshots and strict feature validation
+- Train–serve feature parity enforcement
+- Drift monitoring using Population Stability Index (PSI)
+- Structured inference logging for observability
+- Shadow deployment for safe model comparison
 
 #### Applied Analytics
-    -Rare-event classification (price spike risk)
-    -Threshold tuning to manage alert rates
-    -Monitoring prediction stability over time
-    -Model lifecycle management across retrains
+- Rare-event classification (electricity price spike risk)
+- Threshold tuning for operational alert control
+- Monitoring prediction stability over time
+- End-to-end model lifecycle management across retraining cycles
+
+## Model Performance
+
+The model is evaluated using time-aware validation to simulate real-world forecasting conditions and avoid temporal leakage.
+
+#### Key metrics:
+
+- ROC-AUC: [insert value]
+- Precision at operational threshold: [insert value]
+- Recall of spike events: [insert value]
+- False positive rate: [insert value]
+
+Threshold selection is explicitly optimised to balance:
+
+- Sensitivity to rare spike events
+- Operational alert fatigue
+- Stability of predictions over time
 
 ## Data Sources
 
-Raw data is not committed to this repository due to size constraints and best practices.
+This project uses publicly available data from the `Open Power System Data (OPSD)` initiative.
 
-This project uses data from Open Power System Data (OPSD).
+Raw datasets are not included in the repository due to size and reproducibility best practices.
 
-To download the raw datasets:
+To reproduce:
 
 `scripts/download_data.py`
 
@@ -59,42 +101,70 @@ To download the raw datasets:
 - `src/serve_inference.py` – Batch inference and monitoring  
 - `src/feature_parity.py` – Train ↔ serve feature parity checks  
 
-## Typical Workflow
+## Workflow
+#### 1. Data Acquisition
 
-#### Data Acquisition
-Use `scripts/download_data.py` to fetch and reproduce the raw datasets locally.
+Raw datasets are downloaded and prepared locally using:
+`scripts/download_data.py`
 
-#### Feature Ingestion & Versioning
-`src/ingest_features.py` loads raw time-series data, constructs features, and writes versioned feature tables and schema snapshots.
+#### 2. Feature Engineering & Versioning
+- Time-series transformation (lags, rolling statistics, temporal signals)
+- Versioned feature outputs for reproducibility
+- Schema snapshotting for auditability
 
-#### Schema & Feature Validation
-`src/validate_features.py` enforces column presence, constraints, and basic semantic checks.
-`src/feature_parity.py` guarantees train–serve feature parity (schema, column order, dtypes).
+#### 3. Validation Layer
+- Column-level schema enforcement
+- Data type and constraint validation
+- Semantic consistency checks across pipeline stages
+- Feature parity enforcement between training and inference
 
-#### Model Training
-`src/train_model.py` performs target construction, temporal splits, Optuna tuning, and probability calibration. Trained artifacts and metadata are versioned.
+#### 4. Model Training
+- Time-aware train/test splitting
+- Hyperparameter tuning using Optuna
+- Class imbalance handling for rare spike events
+- Probability calibration for operational stability
+- Versioned model artifact storage
 
-#### Batch Inference & Monitoring
-`src/serve_inference.py` runs production-style batch inference, logs predictions, and computes drift metrics.
-`src/shadow_deploy.py` runs parallel inference for safe model comparisons and iteration.
+#### 5. Batch Inference & Monitoring
+- Production-style batch scoring pipeline
+- Structured prediction logging
+- Drift detection using PSI
+- Prediction stability monitoring over time
+- Shadow deployment support for safe model comparison
 
 ## Engineering Focus
 
-This project is designed to reflect production ML workflows:
+This project prioritises production machine learning system design over isolated model development.
 
-    -Clear separation between ingestion, validation, training, and serving
-    -Defensive checks to prevent silent train/serve mismatches
-    -Feature schema versioning for reproducibility
-    -Observability through drift metrics and structured logs
-    -Shadow deployment patterns used in real ML systems
+Key engineering features include:
+- Strict separation between ingestion, training, and serving layers
+- Defensive design to prevent silent train/serve mismatches
+- Feature schema versioning for reproducibility
+- Monitoring layer for drift and prediction stability
+- Shadow deployment patterns for safe experimentation
 
-The emphasis is on building an ML system that is robust to data changes and operational failure modes.
+The system is designed to remain robust under data drift, schema changes, and operational constraints commonly encountered in real-world ML systems.
 
-## Use Case
+## Why This Project Matters
 
-Although framed around electricity price spike risk, the architecture generalizes to any time-series ML problem where schema stability, feature drift, and safe deployment practices are critical (e.g., demand forecasting, anomaly detection, fraud detection).
+This project demonstrates capability beyond model development by focusing on `end-to-end machine learning system design`, including:
+
+- Production reliability considerations
+- Monitoring and lifecycle management
+- Safe deployment strategies
+- Data integrity enforcement
+- Operational decision constraints rather than offline accuracy alone
+
+It reflects how ML systems are designed and maintained in real production environments.
+
+## Potential Extensions
+- Deployment via FastAPI for real-time inference
+- Airflow orchestration for scheduled pipelines
+- Cloud deployment (AWS / GCP / Azure)
+- MLflow integration for experiment tracking and model registry
+- Streaming-based feature pipelines using Kafka
+- Advanced anomaly detection for drift monitoring
 
 ## Disclaimer
 
-This repository is for demonstration and portfolio purposes only and is not intended for use in live trading or operational decision systems.
-
+This project is for portfolio and educational purposes only and is not intended for live trading or operational deployment in production environments.
