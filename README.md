@@ -34,6 +34,10 @@ Schema Validation Layer
 
    ↓
 
+Price Spike Classification 
+
+   ↓
+
 Model Training & Calibration
 
    ↓
@@ -47,6 +51,10 @@ Batch Inference
    ↓
 
 Monitoring & Drift Detection
+
+   ↓
+
+Shadow Deployment
 
 ### Design Principles
 - Strict `train/serve feature parity enforcement` to prevent inference skew
