@@ -13,10 +13,10 @@ Electricity price spikes can create significant risk in energy markets, affectin
 
 This system demonstrates how machine learning can support:
 
--- Early identification of high-risk pricing periods
--- Operational risk monitoring in energy systems
--- Data-driven decision support for market volatility
--- Improved awareness of system stress conditions using external signals (demand, renewables, weather)
+- Early identification of high-risk pricing periods
+- Operational risk monitoring in energy systems
+- Data-driven decision support for market volatility
+- Improved awareness of system stress conditions using external signals (demand, renewables, weather)
 
 ## What This Demonstrates
 
