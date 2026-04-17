@@ -22,18 +22,30 @@ This system demonstrates how machine learning can support:
 
 The pipeline is structured as a production-grade ML system with clear separation of concerns:
 
-Raw Data
+Raw Data 
+
    ↓
+
 Feature Engineering
+
    ↓
+
 Schema Validation Layer
+
    ↓
+
 Model Training & Calibration
+
    ↓
+
 Model Artifacts / Versioning
+
    ↓
+
 Batch Inference
+
    ↓
+
 Monitoring & Drift Detection
 
 ### Design Principles
