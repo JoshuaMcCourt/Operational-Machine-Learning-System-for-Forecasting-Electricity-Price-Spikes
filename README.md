@@ -57,7 +57,7 @@ Monitoring & Drift Detection
 Shadow Deployment
 
 ### Design Principles
-- Strict `train/serve feature parity enforcement` to prevent inference skew
+- Strict **train/serve feature parity enforcement** to prevent inference skew
 - Versioned feature generation for reproducibility and auditability
 - Modular pipeline design enabling independent retraining and deployment
 - Built-in observability via structured logging and drift monitoring
@@ -105,7 +105,7 @@ Note: Precision, recall, and false positive rate are dependent on the chosen dec
 
 ## Data Sources
 
-This project uses publicly available data from the `Open Power System Data (OPSD)` initiative.
+This project uses publicly available data from the **Open Power System Data (OPSD)** initiative.
 
 Raw datasets are not included in the repository due to size and reproducibility best practices.
 
@@ -168,7 +168,7 @@ The system is designed to remain robust under data drift, schema changes, and op
 
 ## Why This Project Matters
 
-This project demonstrates capability beyond model development by focusing on `end-to-end machine learning system design`, including:
+This project demonstrates capability beyond model development by focusing on **end-to-end machine learning system design**, including:
 
 - Production reliability considerations
 - Monitoring and lifecycle management
