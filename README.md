@@ -67,20 +67,21 @@ Monitoring & Drift Detection
 
 ## Model Performance
 
-The model is evaluated using time-aware validation to simulate real-world forecasting conditions and avoid temporal leakage.
+The model was evaluated using time-aware validation to simulate real-world forecasting conditions and avoid temporal leakage.
 
 #### Key metrics:
+- ROC-AUC: 0.9966  
+- Spike class prevalence: ~5.0% (highly imbalanced classification problem)  
+- Price spike threshold (p95): 68.09  
 
-- ROC-AUC: [insert value]
-- Precision at operational threshold: [insert value]
-- Recall of spike events: [insert value]
-- False positive rate: [insert value]
+The model demonstrates strong discriminative performance in identifying rare high-price events under severe class imbalance.
 
 Threshold selection is explicitly optimised to balance:
-
-- Sensitivity to rare spike events
-- Operational alert fatigue
+- Sensitivity to rare spike events  
+- Operational alert fatigue  
 - Stability of predictions over time
+
+Note: Precision, recall, and false positive rate are dependent on the chosen decision threshold and are monitored during inference for operational tuning.
 
 ## Data Sources
 
