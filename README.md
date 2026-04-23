@@ -3,9 +3,11 @@
 
 ## Summary
 
-This repository implements a modular, production-style machine learning pipeline for detecting elevated risk of electricity price spikes using historical demand, renewable generation, and weather data. The project emphasizes system design, reliability, and operational safeguards rather than just model performance.
+This repository implements a structured machine learning pipeline for detecting elevated risk of electricity price spikes using historical demand, renewable generation, and weather data. The project prioritizes system behaviour, reliability, and operational safeguards alongside model performance.
 
-The codebase mirrors how ML systems are typically structured in production: reproducible data ingestion, versioned feature generation, schema enforcement, train–serve parity checks, model training with tuning and calibration, and monitored batch inference with shadow deployments.
+The pipeline is organised into clearly defined sections, including data ingestion, feature generation, validation, training, and inference, implemented as script-based workflows. Each section is designed to be reproducible and logically separated, while remaining straightforward to execute and inspect.
+
+The codebase incorporates key production-oriented practices such as reproducible data processing, consistent feature construction, schema checks, train–serve consistency validation, model tuning and calibration, and monitored batch inference with shadow-style comparisons.
 
 ## Business Context & Value
 
@@ -59,9 +61,9 @@ Shadow Deployment
 ### Design Principles
 - Strict **train/serve feature parity enforcement** to prevent inference skew
 - Versioned feature generation for reproducibility and auditability
-- Modular pipeline design enabling independent retraining and deployment
-- Built-in observability via structured logging and drift monitoring
-- Shadow deployment support for safe model iteration
+- Clearly defined pipeline **sections** (ingestion, features, training, inference) that can be run independently
+- Built-in observability through structured logging and drift monitoring
+- Shadow-style inference comparisons to support safe model iteration
 
 ## What This Demonstrates
 
