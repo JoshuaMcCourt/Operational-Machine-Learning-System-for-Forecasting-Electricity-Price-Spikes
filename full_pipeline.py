@@ -28,7 +28,7 @@
 #├── models/
 #│   └── logs/                # Production inference logs, drift metrics, and shadow deployment telemetry
 #│
-#├── src/
+#├── sections/
 #│   ├── config.py            # Centralized paths, thresholds, and operational constants
 #│   ├── ingest_features.py   # Raw data ingestion, feature engineering, and snapshot versioning
 #│   ├── validate_features.py # Schema enforcement, semantic validation, and OOD checks
