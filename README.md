@@ -115,12 +115,12 @@ To reproduce:
 
 ## Repository Structure - Key Modules
 
-- `src/config.py` - Centralized paths, thresholds, and operational constants
-- `src/ingest_features.py` – Raw data ingestion and feature engineering  
-- `src/validate_features.py` – Schema and semantic validation  
-- `src/train_model.py` – Training, tuning, and calibration  
-- `src/serve_inference.py` – Batch inference and monitoring  
-- `src/feature_parity.py` – Train ↔ serve feature parity checks  
+- `sections/config.py` - Centralized paths, thresholds, and operational constants
+- `sections/ingest_features.py` – Raw data ingestion and feature engineering  
+- `sections/validate_features.py` – Schema and semantic validation  
+- `sections/train_model.py` – Training, tuning, and calibration  
+- `sections/serve_inference.py` – Batch inference and monitoring  
+- `sections/feature_parity.py` – Train ↔ serve feature parity checks  
 
 ## Workflow
 #### 1. Data Acquisition
