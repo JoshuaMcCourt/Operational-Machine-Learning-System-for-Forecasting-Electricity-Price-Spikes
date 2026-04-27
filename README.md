@@ -1,8 +1,6 @@
 # ML Open Power Project
 ### Production-Style Machine Learning System for Electricity Price Spike Risk
 
----
-
 ## Summary
 
 This repository implements a structured machine learning pipeline for detecting elevated risk of electricity price spikes using historical demand, renewable generation, and weather data. The project prioritizes system behaviour, reliability, and operational safeguards alongside model performance.
