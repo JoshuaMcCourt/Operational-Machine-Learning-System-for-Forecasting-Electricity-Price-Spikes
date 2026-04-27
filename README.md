@@ -1,5 +1,7 @@
 # ML Open Power Project
-### Production-Oriented ML Pipeline for Electricity Price Spike Risk
+### Production-Style Machine Learning System for Electricity Price Spike Risk
+
+---
 
 ## Summary
 
@@ -8,6 +10,8 @@ This repository implements a structured machine learning pipeline for detecting 
 The pipeline is organised into clearly defined sections, including data ingestion, feature generation, validation, training, and inference, implemented as script-based workflows. Each section is designed to be reproducible and logically separated, while remaining straightforward to execute and inspect.
 
 The codebase incorporates key production-oriented practices such as reproducible data processing, consistent feature construction, schema checks, train–serve consistency validation, model tuning and calibration, and monitored batch inference with shadow-style comparisons.
+
+---
 
 ## Business Context & Value
 
@@ -19,6 +23,8 @@ This system demonstrates how machine learning can support:
 - Operational risk monitoring in energy systems
 - Data-driven decision support for market volatility
 - Improved awareness of system stress conditions using external signals (demand, renewables, weather)
+
+---
 
 ## System Architecture
 
@@ -65,64 +71,7 @@ Shadow Deployment
 - Built-in observability through structured logging and drift monitoring
 - Shadow-style inference comparisons to support safe model iteration
 
-## What This Demonstrates
-
-#### Machine Learning Engineering
-- Reproducible feature engineering from raw time-series inputs
-- Temporal feature construction (lags, rolling statistics, trend features)
-- Time-aware train/validation splitting to prevent leakage
-- Hyperparameter optimisation using Optuna
-- Probability calibration for decision-threshold stability
-
-#### Production Readiness
-- Schema snapshots and strict feature validation
-- Train–serve feature parity enforcement
-- Drift monitoring using Population Stability Index (PSI)
-- Structured inference logging for observability
-- Shadow deployment for safe model comparison
-
-#### Applied Analytics
-- Rare-event classification (electricity price spike risk)
-- Threshold tuning for operational alert control
-- Monitoring prediction stability over time
-- End-to-end model lifecycle management across retraining cycles
-
-## Model Performance
-
-The model was evaluated using time-aware validation to simulate real-world forecasting conditions and avoid temporal leakage.
-
-#### Key metrics:
-- ROC-AUC: 0.9966  
-- Spike class prevalence: ~5.0% (highly imbalanced classification problem)  
-- Price spike threshold (p95): 68.09  
-
-The model demonstrates strong discriminative performance in identifying rare high-price events under severe class imbalance.
-
-Threshold selection is explicitly optimised to balance:
-- Sensitivity to rare spike events  
-- Operational alert fatigue  
-- Stability of predictions over time
-
-Note: Precision, recall, and false positive rate are dependent on the chosen decision threshold and are monitored during inference for operational tuning.
-
-## Data Sources
-
-This project uses publicly available data from the **Open Power System Data (OPSD)** initiative.
-
-Raw datasets are not included in the repository due to size and reproducibility best practices.
-
-To reproduce:
-
-`scripts/download_data.py`
-
-## Repository Structure - Key Modules
-
-- `sections/config.py` - Centralized paths, thresholds, and operational constants
-- `sections/ingest_features.py` – Raw data ingestion and feature engineering  
-- `sections/validate_features.py` – Schema and semantic validation  
-- `sections/train_model.py` – Training, tuning, and calibration  
-- `sections/serve_inference.py` – Batch inference and monitoring  
-- `sections/feature_parity.py` – Train ↔ serve feature parity checks  
+---
 
 ## Workflow
 #### 1. Data Acquisition
@@ -155,6 +104,52 @@ Raw datasets are downloaded and prepared locally using:
 - Prediction stability monitoring over time
 - Shadow deployment support for safe model comparison
 
+---
+
+## What This Demonstrates
+
+#### Machine Learning Engineering
+- Reproducible feature engineering from raw time-series inputs
+- Temporal feature construction (lags, rolling statistics, trend features)
+- Time-aware train/validation splitting to prevent leakage
+- Hyperparameter optimisation using Optuna
+- Probability calibration for decision-threshold stability
+
+#### Production Readiness
+- Schema snapshots and strict feature validation
+- Train–serve feature parity enforcement
+- Drift monitoring using Population Stability Index (PSI)
+- Structured inference logging for observability
+- Shadow deployment for safe model comparison
+
+#### Applied Analytics
+- Rare-event classification (electricity price spike risk)
+- Threshold tuning for operational alert control
+- Monitoring prediction stability over time
+- End-to-end model lifecycle management across retraining cycles
+
+---
+
+## Model Performance
+
+The model was evaluated using time-aware validation to simulate real-world forecasting conditions and avoid temporal leakage.
+
+#### Key metrics:
+- ROC-AUC: **0.9966**  
+- Spike class prevalence: **~5.0% (highly imbalanced classification problem)**  
+- Price spike threshold **p95 = 68.09** 
+
+The model demonstrates strong discriminative performance in identifying rare high-price events under severe class imbalance.
+
+Threshold selection is explicitly optimised to balance:
+- Sensitivity to rare spike events  
+- Operational alert fatigue  
+- Stability of predictions over time
+
+Note: Precision, recall, and false positive rate are dependent on the chosen decision threshold and are monitored during inference for operational tuning.
+
+---
+
 ## Engineering Focus
 
 This project prioritises production machine learning system design over isolated model development.
@@ -168,6 +163,31 @@ Key engineering features include:
 
 The system is designed to remain robust under data drift, schema changes, and operational constraints commonly encountered in real-world ML systems.
 
+---
+
+## Repository Structure - Key Modules
+
+- `sections/config.py` - Centralized paths, thresholds, and operational constants
+- `sections/ingest_features.py` – Raw data ingestion and feature engineering  
+- `sections/validate_features.py` – Schema and semantic validation  
+- `sections/train_model.py` – Training, tuning, and calibration  
+- `sections/serve_inference.py` – Batch inference and monitoring  
+- `sections/feature_parity.py` – Train ↔ serve feature parity checks  
+
+---
+
+## Data Sources
+
+This project uses publicly available data from the **Open Power System Data (OPSD)** initiative.
+
+Raw datasets are not included in the repository due to size and reproducibility best practices.
+
+To reproduce:
+
+`scripts/download_data.py`
+
+---
+
 ## Why This Project Matters
 
 This project demonstrates capability beyond model development by focusing on **end-to-end machine learning system design**, including:
@@ -180,6 +200,8 @@ This project demonstrates capability beyond model development by focusing on **e
 
 It reflects how ML systems are designed and maintained in real production environments.
 
+---
+
 ## Potential Extensions
 - Deployment via FastAPI for real-time inference
 - Airflow orchestration for scheduled pipelines
@@ -187,6 +209,8 @@ It reflects how ML systems are designed and maintained in real production enviro
 - MLflow integration for experiment tracking and model registry
 - Streaming-based feature pipelines using Kafka
 - Advanced anomaly detection for drift monitoring
+
+---
 
 ## Disclaimer
 
